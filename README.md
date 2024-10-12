@@ -1,4 +1,4 @@
-# Nav_Sat Demo App
+# NAV_SAT Demo App
 
 This Android app provides a simple demonstration of a precise timer with decisecond accuracy, synchronized with an internet time source. It is a companion for the NAV_SAT model and is used to understand the working of Navigation Satellites. 
 
