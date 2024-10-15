@@ -1,10 +1,13 @@
 package com.example.gpsdemo_navars;
-
+import android.os.Build;
+import android.content.res.ColorStateList;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.blue));
+        }
         setContentView(R.layout.activity_main);
 
         clockTextView = findViewById(R.id.clockTextView);
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // Reset button clicked (resume the clock)
                     isRunning = true;
-                    startButton.setText("Start");
+                    startButton.setText("Send");
                     updateTime(); // Update immediately to get the latest time
                     handler.post(clockRunnable);
                     turnOffFlashlight();
